@@ -5,27 +5,28 @@ include 'config.php';
 $q = mysqli_query($db, 'SELECT * FROM khachhang');
 ?>
 
+<script>
+function xoasanpham(){
+	var conf =confirm("Bản có chắc chắn muốn xóa không");
+	return conf;
+	}
+</script>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Home</title>
-	<style type="text/css">
-		td {
-			padding: 3px 10px;
-		}
-	</style>
+	<link href="css.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<table border="1">
-		<tr>
+	<table border="0">
+		<tr id="tieude">
+        <h2>Huyntph03066</h2>
 			<td>Id</td>
-			<td>Name</td>
+			<td>Họ và tên</td>
 			<td>Email</td>
-			<td>Address</td>
-            <td>Add</td>
-			<td>Edit</td>
-			<td>Delete</td>
+			<td>Địa chỉ</td>
+            <td colspan="2" style="text-align:center;"><a href="add.php?id='.$row['id'].'">Thêm sản phẩm</a></td>
 		</tr>	
 
 		<?php 
@@ -36,9 +37,8 @@ $q = mysqli_query($db, 'SELECT * FROM khachhang');
 				echo '<td>'.$row['fname'].' '.$row['lname'].'</td>';
 				echo '<td>'.$row['email'].'</td>';
 				echo '<td>'.$row['address'].'</td>';
-				echo '<td><a href="add.php?id='.$row['id'].'">Add</a></td>';
-				echo '<td><a href="edit.php?id='.$row['id'].'">Edit</a></td>';
-				echo '<td><a href="delete.php?id='.$row['id'].'">Delete</a></td>';
+				echo '<td style="text-align:center;"><a href="edit.php?id='.$row['id'].'">Sửa</a></td>';
+				echo '<td style="text-align:center;"><a onclick="return xoasanpham();" href="delete.php?id='.$row['id'].'">Xóa</a></td>';
 				echo '</tr>';
 			}
 

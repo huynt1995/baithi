@@ -7,3 +7,4 @@ if (mysqli_query($db, $query)) {
 } else {
 	echo 'Error';
 }
+?>
